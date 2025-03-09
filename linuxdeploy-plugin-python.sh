@@ -20,7 +20,7 @@ script=$(readlink -f $0)
 exe_name="$(basename ${APPIMAGE:-$script})"
 BASEDIR="${APPDIR:-$(readlink -m $(dirname $script))}"
 
-prefix="usr/python"
+prefix="usr"
 
 
 # Parse the CLI
