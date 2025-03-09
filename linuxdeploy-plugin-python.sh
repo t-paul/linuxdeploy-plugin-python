@@ -13,8 +13,8 @@ PIP_OPTIONS="${PIP_OPTIONS:---upgrade}"
 PIP_REQUIREMENTS="${PIP_REQUIREMENTS:-}"
 PYTHON_BUILD_DIR="${PYTHON_BUILD_DIR:-}"
 PYTHON_CONFIG="${PYTHON_CONFIG:-}"
-version="3.8.2"
-PYTHON_SOURCE="${PYTHON_SOURCE:-https://www.python.org/ftp/python/${version}/Python-${version}.tgz}"
+PYTHON_VERSION="${PYTHON_VERSION:-3.10.12}"
+PYTHON_SOURCE="${PYTHON_SOURCE:-https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz}"
 
 script=$(readlink -f $0)
 exe_name="$(basename ${APPIMAGE:-$script})"
