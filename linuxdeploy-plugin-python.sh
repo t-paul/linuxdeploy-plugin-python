@@ -111,7 +111,7 @@ fi
 
 # Install Python from source, if not already in the AppDir
 set +e
-python=$(ls "${APPDIR}/${prefix}/bin/python"?"."?)
+python=$(ls "${APPDIR}/${prefix}/bin/python"?"."*|grep "[0-9]$")
 set -e
 
 if [[ -x "${python}" ]]; then
@@ -149,7 +149,7 @@ else
 fi
 
 cd "${APPDIR}/${prefix}/bin"
-PYTHON_X_Y=$(ls "python"?"."?)
+PYTHON_X_Y=$(ls "python"?"."*|grep "[0-9]$")
 
 
 # Install any extra requirements with pip
