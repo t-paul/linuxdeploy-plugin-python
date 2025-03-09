@@ -275,16 +275,16 @@ find "lib-dynload" -name '*.so' -type f | while read file; do patch_binary "${fi
 
 
 # Copy any TCl/Tk shared data
-if [[ ! -d "${APPDIR}/${prefix}/share/tcltk" ]]; then
-    if [[ -d "/usr/share/tcltk" ]]; then
-        mkdir -p "${APPDIR}/${prefix}/share"
-        cp -r "/usr/share/tcltk" "${APPDIR}/${prefix}/share"
-    else
-        mkdir -p "${APPDIR}/${prefix}/share/tcltk"
-        tclpath="$(ls -d /usr/share/tcl* | tail -1)"
-        tkpath="$(ls -d /usr/share/tk* | tail -1)"
-        for path in "${tclpath}" "${tkpath}"; do
-            cp -r "${path}" "${APPDIR}/${prefix}/share/tcltk"
-        done
-    fi
-fi
+#if [[ ! -d "${APPDIR}/${prefix}/share/tcltk" ]]; then
+#    if [[ -d "/usr/share/tcltk" ]]; then
+#        mkdir -p "${APPDIR}/${prefix}/share"
+#        cp -r "/usr/share/tcltk" "${APPDIR}/${prefix}/share"
+#    else
+#        mkdir -p "${APPDIR}/${prefix}/share/tcltk"
+#        tclpath="$(ls -d /usr/share/tcl* | tail -1)"
+#        tkpath="$(ls -d /usr/share/tk* | tail -1)"
+#        for path in "${tclpath}" "${tkpath}"; do
+#            cp -r "${path}" "${APPDIR}/${prefix}/share/tcltk"
+#        done
+#    fi
+#fi
