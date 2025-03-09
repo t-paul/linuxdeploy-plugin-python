@@ -167,21 +167,21 @@ rm -rf "bin/python"*"-config" "bin/idle"* "lib/pkgconfig" \
 
 
 # Wrap the Python executables
-cd "$APPDIR/${prefix}/bin"
-set +e
-pythons=$(ls "python" "python"? "python"?"."? "python"?"."?"m" 2>/dev/null)
-set -e
-mkdir -p "$APPDIR/usr/bin"
-cd "$APPDIR/usr/bin"
-for python in $pythons
-do
-    if [[ ! -L "$python" ]]; then
-        strip "$APPDIR/${prefix}/bin/${python}"
-        cp "${BASEDIR}/share/python-wrapper.sh" "$python"
-        sed -i "s|[{][{]PYTHON[}][}]|$python|g" "$python"
-        sed -i "s|[{][{]PREFIX[}][}]|$prefix|g" "$python"
-    fi
-done
+#cd "$APPDIR/${prefix}/bin"
+#set +e
+#pythons=$(ls "python" "python"? "python"?"."? "python"?"."?"m" 2>/dev/null)
+#set -e
+#mkdir -p "$APPDIR/usr/bin"
+#cd "$APPDIR/usr/bin"
+#for python in $pythons
+#do
+#    if [[ ! -L "$python" ]]; then
+#        strip "$APPDIR/${prefix}/bin/${python}"
+#        cp "${BASEDIR}/share/python-wrapper.sh" "$python"
+#        sed -i "s|[{][{]PYTHON[}][}]|$python|g" "$python"
+#        sed -i "s|[{][{]PREFIX[}][}]|$prefix|g" "$python"
+#    fi
+#done
 
 
 # Sanitize the shebangs of local Python scripts
@@ -195,11 +195,11 @@ done
 
 
 # Set a hook in Python for cleaning the path detection
-cp "$BASEDIR/share/sitecustomize.py" "$APPDIR"/${prefix}/lib/python*/site-packages
+cp "$BASEDIR/sitecustomize.py" "$APPDIR"/${prefix}/lib/python*/site-packages
 
 
 # Patch binaries and install dependencies
-excludelist="${BASEDIR}/share/excludelist"
+excludelist="${BASEDIR}/excludelist"
 if [[ ! -f "${excludelist}" ]]; then
     pushd "${BASEDIR}"
     wget -cq --no-check-certificate "https://raw.githubusercontent.com/probonopd/AppImages/master/excludelist"
